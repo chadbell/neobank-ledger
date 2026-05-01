@@ -22,8 +22,10 @@ A neobank-style payment ledger built against real APIs.
 
 **Milestone 3: Compliance and Fraud**
 - KYC verification flow
-- Transaction monitoring with anomaly detection
-- Velocity checks and pattern-based risk scoring
+- Real-time transaction risk scoring using scikit-learn (score every transaction before it clears)
+- Anomaly detection model (isolation forest) to catch unusual account behavior
+- Velocity checks on top of model output
+- Train on transaction history from Milestones 1 and 2
 
 **Milestone 4: Multi-Platform Simulation**
 - Merchant accounts, consumer accounts, refund deposit flows
@@ -39,6 +41,7 @@ I'm using Claude Code as a teacher. It explains payments concepts interactively,
 - **Python / FastAPI** — API layer
 - **Stripe Sandbox** — Payment processing (real APIs, test mode)
 - **SQLite** — Ledger storage (upgradeable to Postgres)
+- **scikit-learn / pandas** — Transaction risk scoring and anomaly detection
 
 ## Session Log
 
