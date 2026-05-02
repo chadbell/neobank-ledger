@@ -45,4 +45,10 @@ I'm using Claude Code as a teacher. It explains payments concepts interactively,
 
 ## Session Log
 
-Progress tracked here as I build.
+### 2026-05-02 — Project Setup + Data Models
+- FastAPI project structure with SQLAlchemy and SQLite
+- Three core models: Account, Event, Transaction
+- Event sourcing pattern: Events are the source of truth, Account balance is the snapshot
+- Transaction groups related events (double-entry: debit + credit per transfer)
+- Enums enforced at the database level for account types, event types, transaction types, and transaction status
+- Health check endpoint running
