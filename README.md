@@ -52,3 +52,10 @@ I'm using Claude Code as a teacher. It explains payments concepts interactively,
 - Transaction groups related events (double-entry: debit + credit per transfer)
 - Enums enforced at the database level for account types, event types, transaction types, and transaction status
 - Health check endpoint running
+
+### 2026-05-03 — SQLAlchemy Relationships + UUID Defaults
+- Added UUID auto-generation to all model primary keys
+- Added ForeignKey constraints: Event → Account, Event → Transaction, Transaction → Account (x2)
+- Added relationship() navigation: account.events, account.source_transactions, account.destination_transactions, event.account, event.transaction, transaction.events
+- Added EXTERNAL account type for out-of-system counterparties (ACH destinations, etc.)
+- All three tables verified created in SQLite
