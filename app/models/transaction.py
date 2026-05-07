@@ -14,9 +14,11 @@ class TransactionType(str, Enum):
     TRANSFER = "transfer"
 
 class TransactionStatus(str, Enum):
-    PENDING = "pending"
-    COMPLETED = "completed"
-    FAILED = "failed"
+    PENDING = "pending"            # transaction created, not yet verified. Fraud check and balance check haven't run yet.
+    AUTHORIZED = "authorized"      # funds reserved. The money is earmarked but hasn't moved. Card networks hold it here for 1-3 days.
+    SETTLED = "settled"            # money actually moved. Funds transferred from source to destination.
+    RECONCILED = "reconciled"      # both sides of the ledger match. Accounting is clean.
+    FAILED = "failed"              # A transaction can fail at any stage — fraud check, insufficient funds, network timeout.
 
 class Transaction(Base):
     __tablename__ = "transactions"
