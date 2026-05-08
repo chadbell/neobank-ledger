@@ -25,6 +25,10 @@ class AccountResponse(BaseModel):
     balance: float
 
 
+@router.get("/accounts", response_model=list[AccountResponse])
+def list_accounts(db: Session = Depends(get_db)):
+    return db.query(Account).all()
+
 @router.post("/accounts", response_model=AccountResponse)
 def create_account(req: CreateAccountRequest, db: Session = Depends(get_db)):
     account = Account(
